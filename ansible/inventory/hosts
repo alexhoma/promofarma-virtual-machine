@@ -1,0 +1,20 @@
+[devel_server]
+192.168.22.22 ansible_user=ubuntu
+
+[front_server]
+34.253.161.142 ansible_ssh_private_key_file=~/.ssh/promofarma.pem ansible_user=ubuntu
+
+[mysql_server]
+192.168.22.22
+
+[redis_server]
+192.168.22.22
+
+[mysql_server:vars]
+mysql_innodb_buffer_pool_size="256M"
+
+[front_server:vars]
+time_zone=Europe/Madrid
+
+[devel_server:vars]
+time_zone=Europe/Madrid

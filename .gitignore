@@ -1,0 +1,7 @@
+.idea
+*.log
+*.retry
+.vagrant/
+shared/www/*
+!shared/www/.gitkeep
+*~

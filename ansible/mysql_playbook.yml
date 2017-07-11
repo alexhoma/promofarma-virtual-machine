@@ -1,0 +1,17 @@
+---
+#
+# MySQL playbook for a distributed server of Redis
+#
+
+- name: "----------------------- Start MySQL playbook ------------------------"
+  hosts: mysql_server
+  become: true
+  gather_facts: no
+  pre_tasks:
+    - name: "Install python2"
+      raw: sudo apt-get -y install python python-simplejson
+  become_user: root
+  user: ubuntu
+  roles:
+    - common
+    - mysql

@@ -1,0 +1,10 @@
+---
+- name: "ubuntu:www-data is the owner of /var/www/html/"
+  file:
+    path: /var/www/html
+    owner: ubuntu
+    group: www-data
+    mode: 0775
+    recurse: yes
+  become: yes
+  become_user: root

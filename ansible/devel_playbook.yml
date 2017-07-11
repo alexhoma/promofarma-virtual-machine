@@ -1,0 +1,21 @@
+---
+#
+# Development playbook to group development config
+# For Vagrant environment, for example.
+#
+
+- name: "-------------------- Start Development playbook -----------------------"
+  hosts: devel_server
+  become: true
+  become_user: root
+  gather_facts: no
+  pre_tasks:
+    - name: "Install python2"
+      raw: sudo apt-get -y install python python-simplejson
+  user: ubuntu
+  roles:
+    - common
+    - apache
+    - php
+    - mysql
+    - redis

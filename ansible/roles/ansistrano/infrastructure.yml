@@ -1,0 +1,19 @@
+---
+- name: "ubuntu:www-data is the owner of /var/www/html/"
+  file:
+    path: /var/www/html/
+    owner: ubuntu
+    group: www-data
+    mode: 0777
+    recurse: yes
+  become: yes
+  become_user: root
+
+- name: "Add Virtualhost config file"
+  sudo: yes
+  copy: src={{ playbook_dir }}/apache/000-default.conf dest=/etc/apache2/sites-enabled/000-default.conf
+
+- name: "Restart Apache"
+  become: yes
+  become_user: root
+  service: name=apache2 state=reloaded
